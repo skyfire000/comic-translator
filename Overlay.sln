@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Overlay", "Overlay.csproj", "{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPickerTest", "..\ColorPicker\ColorPicker\ColorPickerTest.csproj", "{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SevenZip2010", "..\SevenZip\SevenZip2010.csproj", "{4960DD14-3431-47EC-B9D9-9D2730A98DC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Deploy|Any CPU = Deploy|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}.Deploy|Any CPU.Build.0 = Debug|Any CPU
+		{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD995CB-6F9F-418C-954E-E0CBDBDF235A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}.Deploy|Any CPU.Build.0 = Debug|Any CPU
+		{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F72CF0B-90B5-4A5F-97F0-0CF8E2D5AB0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4960DD14-3431-47EC-B9D9-9D2730A98DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4960DD14-3431-47EC-B9D9-9D2730A98DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4960DD14-3431-47EC-B9D9-9D2730A98DC3}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{4960DD14-3431-47EC-B9D9-9D2730A98DC3}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{4960DD14-3431-47EC-B9D9-9D2730A98DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4960DD14-3431-47EC-B9D9-9D2730A98DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
