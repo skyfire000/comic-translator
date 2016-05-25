@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Drawing.Imaging;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -9,6 +10,8 @@ using System.IO;
 using Microsoft.Win32;
 using SevenZip;
 using ColorPicker;
+using RavSoft.GoogleTranslator;
+using Tesseract;
 
 namespace Overlay
 {
@@ -63,7 +66,7 @@ namespace Overlay
 		private System.Windows.Forms.ToolBarButton btnNew;
 		private System.Windows.Forms.ToolBarButton toolBarButton2;
 		private System.Windows.Forms.MenuItem itmNewProject;
-		private System.Windows.Forms.ToolBarButton toolBTest;
+		private System.Windows.Forms.ToolBarButton toolBarButton3;
 		private System.Windows.Forms.ToolBarButton btnPrev;
 		private System.Windows.Forms.ToolBarButton btnNext;
 		private System.Windows.Forms.ToolBarButton toolBarButton6;
@@ -135,6 +138,8 @@ namespace Overlay
 		private System.Windows.Forms.MenuItem itmExportQuality;
         private MenuItem menuItem11;
 		private System.Windows.Forms.MenuItem menuItem1;
+        private ToolBarButton btnTran;
+        private Button button1;
         private ColorPickerDialog colorDialog=new ColorPickerDialog();
 
 		[STAThread]
@@ -252,7 +257,7 @@ namespace Overlay
             this.btnZoomIn = new System.Windows.Forms.ToolBarButton();
             this.btnZoomOut = new System.Windows.Forms.ToolBarButton();
             this.toolBarButton7 = new System.Windows.Forms.ToolBarButton();
-            this.toolBTest = new System.Windows.Forms.ToolBarButton();
+            this.toolBarButton3 = new System.Windows.Forms.ToolBarButton();
             this.btnRectangle = new System.Windows.Forms.ToolBarButton();
             this.btnEllipse = new System.Windows.Forms.ToolBarButton();
             this.btnPolygon = new System.Windows.Forms.ToolBarButton();
@@ -286,6 +291,8 @@ namespace Overlay
             this.cmFontSize = new System.Windows.Forms.ComboBox();
             this.saveDialog = new System.Windows.Forms.SaveFileDialog();
             this.openDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnTran = new System.Windows.Forms.ToolBarButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.pLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.pRight.SuspendLayout();
@@ -790,7 +797,7 @@ namespace Overlay
             this.pLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pLeft.Location = new System.Drawing.Point(0, 32);
             this.pLeft.Name = "pLeft";
-            this.pLeft.Size = new System.Drawing.Size(314, 385);
+            this.pLeft.Size = new System.Drawing.Size(412, 466);
             this.pLeft.TabIndex = 3;
             // 
             // pbMain
@@ -800,7 +807,7 @@ namespace Overlay
             this.pbMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbMain.Location = new System.Drawing.Point(0, 0);
             this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(314, 385);
+            this.pbMain.Size = new System.Drawing.Size(412, 466);
             this.pbMain.TabIndex = 1;
             this.pbMain.TabStop = false;
             this.pbMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMain_Paint);
@@ -830,7 +837,7 @@ namespace Overlay
             this.btnZoomIn,
             this.btnZoomOut,
             this.toolBarButton7,
-            this.toolBTest,
+            this.toolBarButton3,
             this.btnRectangle,
             this.btnEllipse,
             this.btnPolygon,
@@ -847,7 +854,7 @@ namespace Overlay
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.ShowToolTips = true;
-            this.toolBar.Size = new System.Drawing.Size(536, 32);
+            this.toolBar.Size = new System.Drawing.Size(634, 32);
             this.toolBar.TabIndex = 5;
             this.toolBar.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.toolBar_ButtonClick);
             // 
@@ -947,9 +954,10 @@ namespace Overlay
             this.toolBarButton7.Name = "toolBarButton7";
             this.toolBarButton7.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
             // 
-            // toolBTest
+            // toolBarButton3
             // 
-            this.toolBTest.Name = "toolBarButton3";
+            this.toolBarButton3.Name = "toolBarButton3";
+            this.toolBarButton3.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
             // 
             // btnRectangle
             // 
@@ -1031,9 +1039,9 @@ namespace Overlay
             this.pRight.Controls.Add(this.panel1);
             this.pRight.Controls.Add(this.pText);
             this.pRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pRight.Location = new System.Drawing.Point(314, 32);
+            this.pRight.Location = new System.Drawing.Point(412, 32);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(222, 385);
+            this.pRight.Size = new System.Drawing.Size(222, 466);
             this.pRight.TabIndex = 6;
             // 
             // panel1
@@ -1043,7 +1051,7 @@ namespace Overlay
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 215);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 170);
+            this.panel1.Size = new System.Drawing.Size(222, 251);
             this.panel1.TabIndex = 9;
             // 
             // lbPictures
@@ -1054,7 +1062,7 @@ namespace Overlay
             this.lbPictures.ItemHeight = 17;
             this.lbPictures.Location = new System.Drawing.Point(0, 17);
             this.lbPictures.Name = "lbPictures";
-            this.lbPictures.Size = new System.Drawing.Size(222, 153);
+            this.lbPictures.Size = new System.Drawing.Size(222, 234);
             this.lbPictures.TabIndex = 10;
             this.lbPictures.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbPictures_DrawItem);
             this.lbPictures.SelectedIndexChanged += new System.EventHandler(this.lbPictures_SelectedIndexChanged);
@@ -1111,15 +1119,16 @@ namespace Overlay
             this.btnAlignment,
             this.btnTextColor,
             this.btnFillColor,
-            this.btnSetDefault});
+            this.btnSetDefault,
+            this.btnTran});
             this.tbarText.Divider = false;
             this.tbarText.Dock = System.Windows.Forms.DockStyle.None;
             this.tbarText.DropDownArrows = true;
             this.tbarText.ImageList = this.imageList;
-            this.tbarText.Location = new System.Drawing.Point(121, 57);
+            this.tbarText.Location = new System.Drawing.Point(100, 57);
             this.tbarText.Name = "tbarText";
             this.tbarText.ShowToolTips = true;
-            this.tbarText.Size = new System.Drawing.Size(87, 57);
+            this.tbarText.Size = new System.Drawing.Size(108, 57);
             this.tbarText.TabIndex = 4;
             this.tbarText.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.tbarText_ButtonClick);
             // 
@@ -1259,10 +1268,26 @@ namespace Overlay
             // 
             this.saveDialog.FileName = "doc1";
             // 
+            // btnTran
+            // 
+            this.btnTran.ImageIndex = 20;
+            this.btnTran.Name = "btnTran";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(535, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 14);
-            this.ClientSize = new System.Drawing.Size(536, 417);
+            this.ClientSize = new System.Drawing.Size(634, 498);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pLeft);
             this.Controls.Add(this.pRight);
             this.Controls.Add(this.toolBar);
@@ -2458,8 +2483,48 @@ namespace Overlay
 			((MenuItem)sender).Checked = true;
 		}
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DoOCR();
+        }
+
+        private void DoTran()
+        {
+            {
+            Translator t = new Translator();
+                tbText.Text=t.Translate("what","en","zh-cn");
+                if (t.Error == null)
+                {
+                    MessageBox.Show(t.TranslationSpeechUrl, t.TranslationSpeechUrl, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+        
+            }
+        }
+
+        private void DoOCR()
+        {
+            Scan sc = (Scan)project.Scans[currentScan];
+            AreaMode mode = Area.Mode;
+            Area.Mode = AreaMode.View;
+            Bitmap img = (Bitmap)sc.GetImage();
+    //        WinApi.GdiBitmap bmp = WinApi.GdiBitmap.FromBitmap(Display.Handle, img);
+    //        Areas.DrawToDC(bmp.Hdc, new Rectangle(0, 0, img.Width, img.Height),
+   //             new Point(0, 0));
+   //         img = Bitmap.FromHbitmap(bmp.Hbitmap);
+  
 
 
+            using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
+            {
 
-	}
+                    using (var page = engine.Process(img))
+                    {
+                        tbText.Text = page.GetText();
+                    }
+            
+            }
+
+        }
+
+    }
 }
